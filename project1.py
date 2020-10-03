@@ -18,14 +18,14 @@ class COV19Library:
     def LoadData(self,filename):
         with open(filename,'r') as excel_file:
             sheet_1 = csv.reader(excel_file,delimiter = ',')
-            for row in sheet_1:
+            for row in range(1,len(sheet_1)):
                 cid = row[0]
                 pop = row[2]
                 names = row[1]
                 cstate = []
                 cname = []
                 cities = []
-                for i in range(1,len(names)):
+                for i in range(len(names)):
 
                     temp = names[i].split(' ')
                     newtemp = temp[len(temp) - 1]
@@ -42,16 +42,9 @@ class COV19Library:
                     for i in range(4,65):
                         cities.append(int(row[i]))
 
-                    data = City(cid,cname,cstate,pop,cities)
-                    self.datalist.append(data)
-        self.size = len(self.datalist)
-
-
-
-
-
-
-
+                        data = City(cid,cname,cstate,pop,cities)
+                        self.datalist.append(data)
+                self.size = len(self.datalist)
 
 
 
