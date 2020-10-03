@@ -57,7 +57,7 @@ class COV19Library:
                 cities = []
                 for i in range(len(names)):
                     if i !=0:
-                        temp = names.[i].split(' ')
+                        temp = names[i].split(' ')
                         newtemp = temp[len(temp) - 1]
                         cstate.append(newtemp)
 
