@@ -28,11 +28,10 @@ class COV19Library:
                     pop = row[2]
                     names = row[1]
                     cities = []
-                    cname = ""
                     temp = names.split()
                     cstate = temp[len(temp) - 1]
                     newnewtemp = temp[0:len(temp) - 1]
-                    cstate = " ".join(newnewtemp)
+                    cname = " ".join(newnewtemp)
                     #newstring = ""
                     #for i in range(len(newnewtemp)):
                     #    newstring = newstring + newnewtemp[i]
