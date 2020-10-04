@@ -101,12 +101,14 @@ class COV19Library: # Init the class that will manage all the city objects
             if right < left:
                 done = True
             else:
-                self.cityArray[left].cname,self.cityArray[right].cname = self.cityArray[right].cname, \
-                                                                         self.cityArray[left].cname
+                temp = self.cityArray[left].cname
+                self.cityArray[left].cname = self.cityArray[right].cname
+                self.cityArray[right].cname = temp
                 #swap
 
-
-        self.cityArray[first].cname,self.cityArray[right].cname = self.cityArray[right].cname,self.cityArray[first].cname
+        temp = self.cityArray[first].cname
+        self.cityArray[first].cname = self.cityArray[right].cname
+        self.cityArray[right].cname = temp
         #swap
 
         return right
@@ -114,7 +116,7 @@ class COV19Library: # Init the class that will manage all the city objects
 
 
 
-c = COV19Library()
-c.quickSort()
+#c = COV19Library()
+#c.quickSort()
 
 #print(c.linearSearch('23700','id'))
