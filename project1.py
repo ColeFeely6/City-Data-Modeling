@@ -11,7 +11,7 @@ class City:
         self.cities = cities
     def __str__(self):
         return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
-                + str(self.cstate) +"; cases: " + str(self.cities) )
+                + str(self.cstate) +"; cases:" + str(self.cities) )
 class COV19Library:
     def __init__(self):
         self.cityArray = []
