@@ -10,9 +10,9 @@ class City:
         self.pop = pop
         self.cities = cities
     def __str__(self):
-        return ("cid: "+ str(self.cityArray.cid) + "; cname: " + str(self.cityArray.cname) + "; cstate: " \
-                + str(self.cityArray.cstate) +" cases: " + str(self.cityArray.cities)+ \
-                "; population: " + str(self.cityArray.pop) )
+        return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
+                + str(self.cstate) +" cases: " + str(self.cities)+ \
+                "; population: " + str(self.pop) )
 class COV19Library:
     def __init__(self):
         self.cityArray = []
