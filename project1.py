@@ -56,9 +56,9 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def linearSearch(self,city,attribute):
         for i in self.cityArray:
-            if attribute == "cid":
+            if attribute == self.cityArray[i].cid:
                 return self.cityArray[i]
-            elif city == "cname":
+            elif city == self.cityArray[i].cname:
                 return self.cityArray[i]
             elif i == len(self.cityArray)-1:
-                return "instance of this city is not found"
+                return "City not found"
