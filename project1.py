@@ -50,5 +50,3 @@ class COV19Library:
 
 
 
-print(COV19Library.cityArray[0].cname)
-
