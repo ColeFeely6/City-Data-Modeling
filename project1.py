@@ -76,14 +76,14 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def quickSort(self):
         # make sure to change self.isSorted
-        quicksorthelper(0,len(self.cityArray)-1)
+        self.quicksorthelper(0,len(self.cityArray)-1)
         self.isSorted = True
 
     def quicksorthelper(self, first, last):
         if first < last:
-            splitpoint = partition(first,last)
-            quicksorthelper(first,splitpoint-1)
-            quicksorthelper(splitpoint+1,last)
+            splitpoint = self.partition(first,last)
+            self.quicksorthelper(first,splitpoint-1)
+            self.quicksorthelper(splitpoint+1,last)
 
     def partition(self,first,last):
         pivot= self.cityArray[first]
