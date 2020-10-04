@@ -43,7 +43,7 @@ class COV19Library:
                     for i in range(4,65):
                         cities += [int(row[i])]
 
-                    data = City(cid,cname,cstate,pop,cities)
+                    data = City(cid,cname,cstate,pop,sum(cities))
                     self.cityArray += [data]
                 count += 1
                 self.size = len(self.cityArray)
