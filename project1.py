@@ -44,7 +44,7 @@ class COV19Library: # Init the class that will manage all the city objects
 
                     for i in range(4,65): # iterate through the cases data, aka 5th column to the max 66th
                         cities.append(int(column[i])) # add that case to the list
-                    # Now for all the data colelcted for this iteraiton add it to an instance of city
+                    # Now for all the data collected for this iteration add it to an instance of city
                     # Add that City Object to the list of all the city objects
                     data = City(cid,cname,cstate,pop,cities)
                     self.cityArray += [data]
@@ -56,9 +56,9 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def linearSearch(self,city,attribute):
         for i in range(len(self.cityArray)):
-            if attribute == self.cityArray[i].cid:
+            if attribute == self.cityArray[i].cid or attribute == self.cityArray[i].cname:
                 print(self.cityArray[i])
-            elif city == self.cityArray[i].cname:
+            elif city == self.cityArray[i].cname or city == self.cityArray[i].cid:
                 print(self.cityArray[i])
             elif i == len(self.cityArray)-1:
                 return "City not found"
