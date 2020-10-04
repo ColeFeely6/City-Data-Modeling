@@ -28,23 +28,16 @@ class COV19Library:
                     cid = row[0]
                     pop = row[2]
                     names = row[1]
-                    cname = ""
                     cities = []
-                    temp = names.split(' ')
+                    temp = names.split()
                     cstate = temp[len(temp) - 1]
-                    newnewtemp = temp[0:len(temp) - 1]
-                    newstring = ""
-                    for i in range(len(newnewtemp)):
-                        newstring = newstring + newnewtemp[i]
-                        if i != len(newnewtemp):
-                            newstring += " "
-                        cname = cname + newstring
+                    cname = " ".join(names[:len(temp)-1])
 
                     for i in range(4,65):
                         cities.append(int(row[i]))
 
                     data = City(cid,cname,cstate,pop,cities)
-                    self.cityArray.append(data)
+                    self.cityArray += [data]
                 count += 1
                 self.size = len(self.cityArray)
 
