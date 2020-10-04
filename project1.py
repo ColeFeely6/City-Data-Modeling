@@ -11,8 +11,7 @@ class City:
         self.cities = cities
     def __str__(self):
         return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
-                + str(self.cstate) +" cases: " + str(self.cities)+ \
-                "; population: " + str(self.pop) )
+                + str(self.cstate) +"; cases: " + str(self.cities) )
 class COV19Library:
     def __init__(self):
         self.cityArray = []
@@ -30,15 +29,16 @@ class COV19Library:
                     names = row[1]
                     cities = []
                     cname = ""
-                    temp = names.split(' ')
+                    temp = names.split()
                     cstate = temp[len(temp) - 1]
                     newnewtemp = temp[0:len(temp) - 1]
-                    newstring = ""
-                    for i in range(len(newnewtemp)):
-                        newstring = newstring + newnewtemp[i]
-                        if i != len(newnewtemp):
-                            newstring += " "
-                        cname = cname + newstring
+                    cstate = " ".join(newnewtemp)
+                    #newstring = ""
+                    #for i in range(len(newnewtemp)):
+                    #    newstring = newstring + newnewtemp[i]
+                    #    if i != len(newnewtemp):
+                    #        newstring += " "
+                    #    cname = cname + newstring
 
                     for i in range(4,65):
                         cities.append(int(row[i]))
