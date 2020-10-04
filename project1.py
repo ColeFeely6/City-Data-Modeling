@@ -9,16 +9,16 @@ class City:
         self.cstate = cstate
         self.pop = pop
         self.cities = cities
-
+    def __str__(self):
+        return ("cid: "+ str(self.cityArray.cid) + "; cname: " + str(self.cityArray.cname) + "; cstate: " \
+                + str(self.cityArray.cstate) +" cases: " + str(self.cityArray.cities)+ \
+                "; population: " + str(self.cityArray.pop) )
 class COV19Library:
     def __init__(self):
         self.cityArray = []
         self.isSorted = False
         self.size = 0
-    def __str__(self,n):
-        return ("cid: "+ str(self.cityArray[n].cid) + " name: " + str(self.cityArray[n].cname) + " state: " \
-                + str(self.cityArray[n].cstate) + " population: " + str(self.cityArray[n].pop) + \
-                " cases: " + str(self.cityArray[n].cities) )
+
     def LoadData(self,filename):
         with open(filename,'r') as excel_file:
             sheet_1 = csv.reader(excel_file,delimiter = ',')
@@ -40,6 +40,3 @@ class COV19Library:
                     self.cityArray += [data]
                 count += 1
                 self.size = len(self.cityArray)
-
-
-
