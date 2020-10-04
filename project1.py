@@ -11,7 +11,7 @@ class City: # Init the class to store all the operations needed for each city
         self.cities = cities
     def __str__(self): # Print out the necessary information from LoadData
         return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
-                + str(self.cstate) +"; cases:" + str(self.cities) )
+                + str(self.cstate) +"; cases:" + str(cities[len(cities)-1]) )
 
 
 
@@ -22,6 +22,8 @@ class COV19Library: # Init the class that will manage all the city objects
         self.cityArray = [] # init the array that stores all the city objects
         self.isSorted = False # return if the cityArray si sorted, init as False
         self.size = len(self.cityArray) # init the size variable that will be given as the length of cityArray
+
+
 #----------------------------------------------------------------------------------------------------------------------
     def LoadData(self,filename): # Open any csv file given
         with open(filename,'r') as excel_file: # open the file as excel_file
@@ -44,10 +46,19 @@ class COV19Library: # Init the class that will manage all the city objects
                         cities.append(int(column[i])) # add that case to the list
                     # Now for all the data colelcted for this iteraiton add it to an instance of city
                     # Add that City Object to the list of all the city objects
-                    data = City(cid,cname,cstate,pop,cities[len(cities)-1])
+                    data = City(cid,cname,cstate,pop,cities)
                     self.cityArray += [data]
                 # increment count so we can avoid the first row of labels
                 count += 1
                 # Update the size of the Library
                 self.size = len(self.cityArray)
 #----------------------------------------------------------------------------------------------------------------------
+
+    def linearSearch(self,city,attribute):
+        for i in self.cityArray:
+            if attribute == "cid":
+                return cityArray[i]
+            elif city == "cname":
+                return cityArray[i]
+            elif i == len(self.cityArray)-1:
+                return "instance of this city is not found"
