@@ -11,7 +11,7 @@ class City: # Init the class to store all the operations needed for each city
         self.cities = cities
     def __str__(self): # Print out the necessary information from LoadData
         return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
-                + str(self.cstate) +"; cases:" + str(cities[len(cities)-1]) )
+                + str(self.cstate) +"; cases:" + str(self.cities[len(self.cities)-1]) )
 
 
 
@@ -57,8 +57,8 @@ class COV19Library: # Init the class that will manage all the city objects
     def linearSearch(self,city,attribute):
         for i in self.cityArray:
             if attribute == "cid":
-                return cityArray[i]
+                return self.cityArray[i]
             elif city == "cname":
-                return cityArray[i]
+                return self.cityArray[i]
             elif i == len(self.cityArray)-1:
                 return "instance of this city is not found"
