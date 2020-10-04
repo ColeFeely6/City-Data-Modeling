@@ -56,7 +56,7 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def linearSearch(self,city,attribute):
         self.LoadData('cov19_city.csv')
-        if attribute == 'cid':
+        if attribute == 'id':
             for i in range(len(self.cityArray)):
                 if str(city) == self.cityArray[i].cid:
                     return self.cityArray[i]
@@ -72,4 +72,4 @@ class COV19Library: # Init the class that will manage all the city objects
             return 'City not found'
 
 #c = COV19Library()
-#print(c.linearSearch(23700,'cid'))
+#print(c.linearSearch('23700','id'))
