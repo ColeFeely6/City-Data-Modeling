@@ -75,6 +75,7 @@ class COV19Library: # Init the class that will manage all the city objects
 
 
     def quickSort(self):
+        self.LoadData('cov19_city.csv')
         # make sure to change self.isSorted
         self.quicksorthelper(0,len(self.cityArray)-1)
         self.isSorted = True
@@ -86,25 +87,27 @@ class COV19Library: # Init the class that will manage all the city objects
             self.quicksorthelper(splitpoint+1,last)
 
     def partition(self,first,last):
-        pivot= self.cityArray[first].cid
+        pivot= self.cityArray[first].cname
 
         left = first + 1
         right = last
 
         done = False
         while not done:
-            while left <= right and self.cityArray[left].cid <= pivot:
+            while left <= right and self.cityArray[left].cname <= pivot:
                 left += 1
-            while self.cityArray[right].cid >= pivot and right >= left:
+            while self.cityArray[right].cname >= pivot and right >= left:
                 right -= 1
             if right < left:
                 done = True
             else:
-                self.cityArray[left].cid,self.cityArray[right].cid = self.cityArray[right].cid, self.cityArray[left].cid
+                self.cityArray[left].cname,self.cityArray[right].cname = self.cityArray[right].cname, \
+                                                                         self.cityArray[left].cname
                 #swap
 
 
-        self.cityArray[first].cid,self.cityArray[right].cid = self.cityArray[right].cid,self.cityArray[first].cid #swap
+        self.cityArray[first].cname,self.cityArray[right].cname = self.cityArray[right].cname,self.cityArray[first].cname
+        #swap
 
         return right
 
