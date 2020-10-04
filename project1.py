@@ -15,8 +15,10 @@ class COV19Library:
         self.cityArray = []
         self.isSorted = False
         self.size = 0
-    def __str__(self):
-        return ("cid "+self.cid)
+    def __str__(self,n):
+        return ("cid: "+ str(self.cityArray[n].cid) + " name: " + str(self.cityArray[n].cname) + " state: " \
+                + str(self.cityArray[n].cstate) + " population: " + str(self.cityArray[n].pop) + \
+                " cases: " + str(self.cityArray[n].cities) )
     def LoadData(self,filename):
         with open(filename,'r') as excel_file:
             sheet_1 = csv.reader(excel_file,delimiter = ',')
@@ -26,21 +28,17 @@ class COV19Library:
                     cid = row[0]
                     pop = row[2]
                     names = row[1]
-                    cstate = []
-                    cname = []
+                    cname = ""
                     cities = []
-                    for i in range(len(names)):
-                        temp = names[i].split(' ')
-                        newtemp = temp[len(temp) - 1]
-                        cstate.append(newtemp)
-
-                        newnewtemp = temp[0:len(temp) - 1]
-                        newstring = ""
-                        for i in range(len(newnewtemp)):
-                            newstring = newstring + newnewtemp[i]
-                            if i != len(newnewtemp):
-                                newstring += " "
-                            cname.append(newstring)
+                    temp = names.split(' ')
+                    cstate = temp[len(temp) - 1]
+                    newnewtemp = temp[0:len(temp) - 1]
+                    newstring = ""
+                    for i in range(len(newnewtemp)):
+                        newstring = newstring + newnewtemp[i]
+                        if i != len(newnewtemp):
+                            newstring += " "
+                        cname = cname + newstring
 
                     for i in range(4,65):
                         cities.append(int(row[i]))
@@ -52,4 +50,5 @@ class COV19Library:
 
 
 
+print(COV19Library.cityArray[0].cname)
 
