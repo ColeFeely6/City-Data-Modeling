@@ -21,7 +21,7 @@ class COV19Library:
         with open(filename,'r') as excel_file:
             sheet_1 = csv.reader(excel_file,delimiter = ',')
             count = 0
-            for row in range(len(sheet_1)):
+            for row in sheet_1:
                 if count != 0:
                     cid = row[0]
                     pop = row[2]
