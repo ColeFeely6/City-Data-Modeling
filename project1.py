@@ -86,29 +86,32 @@ class COV19Library: # Init the class that will manage all the city objects
             self.quicksorthelper(splitpoint+1,last)
 
     def partition(self,first,last):
-        pivot= self.cityArray[first]
+        pivot= self.cityArray[first].cid
 
         left = first + 1
         right = last
 
         done = False
         while not done:
-            while left <= right and self.cityArray[left] <= pivot:
+            while left <= right and self.cityArray[left].cid <= pivot:
                 left += 1
-            while self.cityArray[right] >= pivot and right >= left:
+            while self.cityArray[right].cid >= pivot and right >= left:
                 right -= 1
             if right < left:
                 done = True
             else:
-                self.cityArray[left],self.cityArray[right] = self.cityArray[right], self.cityArray[left] #swap
+                self.cityArray[left].cid,self.cityArray[right].cid = self.cityArray[right].cid, self.cityArray[left].cid
+                #swap
 
 
-        self.cityArray[first],self.cityArray[right] = self.cityArray[right],self.cityArray[first] #swap
+        self.cityArray[first].cid,self.cityArray[right].cid = self.cityArray[right].cid,self.cityArray[first].cid #swap
 
         return right
 
 
 
 
-#c = COV19Library()
+c = COV19Library()
+c.quickSort()
+
 #print(c.linearSearch('23700','id'))
