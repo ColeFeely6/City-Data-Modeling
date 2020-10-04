@@ -72,13 +72,15 @@ class COV19Library: # Init the class that will manage all the city objects
             return 'City not found'
 #----------------------------------------------------------------------------------------------------------------------
 
-
+## TODO I think that this function is creating new names because there should be 942 terms but there are 1884
+    ## TODO check and see if proper swapping
 
     def quickSort(self):
         self.LoadData('cov19_city.csv')
         # make sure to change self.isSorted
         self.quicksorthelper(0,len(self.cityArray)-1)
         self.isSorted = True
+        return self.cityArray
 
     def quicksorthelper(self, first, last):
         if first < last:
@@ -117,7 +119,7 @@ class COV19Library: # Init the class that will manage all the city objects
 
 
 
-c = COV19Library()
-c.quickSort()
+#c = COV19Library()
+#c.quickSort()
 
 #print(c.linearSearch('23700','id'))
