@@ -77,7 +77,7 @@ class COV19Library: # Init the class that will manage all the city objects
     def quickSort(self):
         self.LoadData('cov19_city.csv')
         # make sure to change self.isSorted
-        self.quicksorthelper(0,len(self.cityArray)-1)
+        self.quicksorthelper(0,len(self.cityArray))
         self.isSorted = True
 
     def quicksorthelper(self, first, last):
