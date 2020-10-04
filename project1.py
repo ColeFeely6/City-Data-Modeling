@@ -12,7 +12,7 @@ class City:
 
 class COV19Library:
     def __init__(self):
-        self.datalist = []
+        self.cityArray = []
         self.isSorted = False
         self.size = 0
     def __str__(self):
@@ -46,9 +46,9 @@ class COV19Library:
                         cities.append(int(row[i]))
 
                     data = City(cid,cname,cstate,pop,cities)
-                    self.datalist.append(data)
+                    self.cityArray.append(data)
                 count += 1
-                self.size = len(self.datalist)
+                self.size = len(self.cityArray)
 
 
 
