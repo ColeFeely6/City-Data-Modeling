@@ -41,9 +41,9 @@ class COV19Library:
                     cname = " ".join(newnewtemp)
 
                     for i in range(4,65):
-                        cities += [int(row[i])]
+                        cities.append(int(row[i]))
 
-                    data = City(cid,cname,cstate,pop,sum(cities))
+                    data = City(cid,cname,cstate,pop,cities[len(cities)])
                     self.cityArray += [data]
                 count += 1
                 self.size = len(self.cityArray)
