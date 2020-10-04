@@ -56,20 +56,59 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def linearSearch(self,city,attribute):
         self.LoadData('cov19_city.csv')
-        if attribute == 'id':
-            for i in range(len(self.cityArray)):
-                if str(city) == self.cityArray[i].cid:
+        if attribute == 'id': # If the attribute passed in is a id
+            for i in range(len(self.cityArray)): # iterate through out list
+                if str(city) == self.cityArray[i].cid: # If found return that city object
                     return self.cityArray[i]
-                elif i == len(self.cityArray)-1:
+                elif i == len(self.cityArray)-1: # Else if we are at the end of the list and not found, say so
                     return 'City not found'
-        elif attribute == 'name':
-            for i in range(len(self.cityArray)):
-                if city == self.cityArray[i].cname:
+        elif attribute == 'name': # If the attribute passed in is a name
+            for i in range(len(self.cityArray)): # iterate through out list
+                if city == self.cityArray[i].cname:# If found return that city object
                     return self.cityArray[i]
-                elif i == len(self.cityArray) - 1:
+                elif i == len(self.cityArray) - 1: # Else if we are at the end of the list and not found, say so
                     return 'City not found'
         else:
             return 'City not found'
+#----------------------------------------------------------------------------------------------------------------------
+
+
+
+    def quickSort(self):
+        # make sure to change self.isSorted
+        quicksorthelper(0,len(self.cityArray)-1)
+        self.isSorted = True
+
+    def quicksorthelper(self, first, last):
+        if first < last:
+            splitpoint = partition(first,last)
+            quicksorthelper(first,splitpoint-1)
+            quicksorthelper(splitpoint+1,last)
+
+    def partition(self,first,last):
+        pivot= self.cityArray[first]
+
+        left = first + 1
+        right = last
+
+        done = False
+        while not done:
+            while left <= right and self.cityArray[left] <= pivot:
+                left += 1
+            while self.cityArray[right] >= pivot and right >= left:
+                right -= 1
+            if right < left:
+                done = True
+            else:
+                self.cityArray[left],self.cityArray[right] = self.cityArray[right], self.cityArray[left] #swap
+
+
+        self.cityArray[first],self.cityArray[right] = self.cityArray[right],self.cityArray[first] #swap
+
+        return right
+
+
+
 
 #c = COV19Library()
 #print(c.linearSearch('23700','id'))
