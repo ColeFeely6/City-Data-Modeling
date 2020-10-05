@@ -240,7 +240,7 @@ class COV19Library: # Init the class that will manage all the city objects
         else:
             return self._get(key, currentNode.rightChild)
 
-    def __getitem__(self, key):
+    def searchBST(self,key):
         return self.get(key)
 
 
