@@ -110,7 +110,7 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def quickSort(self):
         # make sure to change self.isSorted
-        self.quicksorthelper(0,len(self.cityArray)-1)
+        self.quicksorthelper(0,self.size-1)
         self.isSorted = True
         return self.cityArray
 
