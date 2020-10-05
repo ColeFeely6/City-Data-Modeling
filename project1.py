@@ -74,7 +74,7 @@ class AVLTree:
                 self._put(key,val,currentNode.leftChild)
             else:
                 currentNode.leftChild = TreeNode(key,val,parent=currentNode)
-                self.updateBalance(currentNode.leftChile)
+                self.updateBalance(currentNode.leftChild)
         else:
             if currentNode.hasRightChild():
                 self._put(key,val,currentNode.rightChild)
@@ -112,7 +112,7 @@ class AVLTree:
         rotRoot.parent = newRoot
         rotRoot.balanceFactor = rotRoot.balanceFactor + 1 - min(
             newRoot.balanceFactor, 0)
-        newRoot.balanceFactor = newRoot.blanceFactor + 1 + max(
+        newRoot.balanceFactor = newRoot.balanceFactor + 1 + max(
             rotRoot.balanceFactor, 0)
 
     def rotateRight(self,rotRoot):
