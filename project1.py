@@ -169,8 +169,5 @@ class COV19Library: # Init the class that will manage all the city objects
                 currentNode.rightChild = TreeNode(key, val, parent=currentNode)
 
 
-c = COV19Library()
-c.quickSort()
-for i in
 
 #print(c.linearSearch('23700','id'))
