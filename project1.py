@@ -13,7 +13,40 @@ class City: # Init the class to store all the operations needed for each city
         return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
                 + str(self.cstate) +"; cases:" + str(self.cities[len(self.cities)-1]) )
 
+#######################################################################################################################
+class TreeNode:
+    class TreeNode:
+        def __init__(self, key, val, left=None, right=None, parent=None):
+            self.key = key
+            self.payload = val
+            self.leftChild = left
+            self.rightChild = right
+            self.parent = parent
+            self.balanceFactor = 0
 
+        def hasLeftChild(self):
+            return self.leftChild
+
+        def hasRightChild(self):
+            return self.rightChild
+
+        def isLeftChild(self):
+            return self.parent and self.parent.leftChild == self
+
+        def isRightChild(self):
+            return self.parent and self.parent.rightChild == self
+
+        def isRoot(self):
+            return not self.parent
+
+        def isLeaf(self):
+            return not (self.rightChild or self.leftChild)
+
+        def hasAnyChildren(self):
+            return self.rightChild or self.leftChild
+
+        def hasBothChildren(self):
+            return self.rightChild and self.leftChild
 
 #######################################################################################################################
 
@@ -22,7 +55,7 @@ class COV19Library: # Init the class that will manage all the city objects
         self.cityArray = [] # init the array that stores all the city objects
         self.isSorted = False # return if the cityArray si sorted, init as False
         self.size = len(self.cityArray) # init the size variable that will be given as the length of cityArray
-
+        self.root = None
 
 #----------------------------------------------------------------------------------------------------------------------
     def LoadData(self,filename): # Open any csv file given
@@ -76,7 +109,6 @@ class COV19Library: # Init the class that will manage all the city objects
     ## TODO check and see if proper swapping
 
     def quickSort(self):
-        self.LoadData('cov19_city.csv')
         # make sure to change self.isSorted
         self.quicksorthelper(0,len(self.cityArray)-1)
         self.isSorted = True
@@ -116,7 +148,26 @@ class COV19Library: # Init the class that will manage all the city objects
 
         return right
 
+#-----------------------------------------------------------------------------------------------------------------------
 
+    def put(self, key, val):
+        if self.root:
+            self._put(key, val, self.root)
+        else:
+            self.root = TreeNode(key, val)
+        self.size = self.size + 1
+
+    def _put(self, key, val, currentNode):
+        if key < currentNode.key:
+            if currentNode.hasLeftChild():
+                self._put(key, val, currentNode.leftChild)
+            else:
+                currentNode.leftChild = TreeNode(key, val, parent=currentNode)
+        else:
+            if currentNode.hasRightChild():
+                self._put(key, val, currentNode.rightChild)
+            else:
+                currentNode.rightChild = TreeNode(key, val, parent=currentNode)
 
 
 #c = COV19Library()
