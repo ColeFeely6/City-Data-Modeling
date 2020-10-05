@@ -88,7 +88,7 @@ class COV19Library: # Init the class that will manage all the city objects
 #----------------------------------------------------------------------------------------------------------------------
 
     def linearSearch(self,city,attribute):
-        self.LoadData('cov19_city.csv')
+        #self.LoadData('cov19_city.csv')
         if attribute == 'id': # If the attribute passed in is a id
             for i in range(len(self.cityArray)): # iterate through out list
                 if str(city) == self.cityArray[i].cid: # If found return that city object
@@ -169,5 +169,10 @@ class COV19Library: # Init the class that will manage all the city objects
                 currentNode.rightChild = TreeNode(key, val, parent=currentNode)
 
 
-
-#print(c.linearSearch('23700','id'))
+'''if __name__ == "__main__":
+  c = COV19Library()
+  c.LoadData('cov19_city.csv')
+  c.quickSort()
+  for i in range(len(c.cityArray)):
+      print(c.cityArray[i].cname)
+#print(c.linearSearch('23700','id'))'''
