@@ -1,6 +1,6 @@
 #import pandas as pd
 import csv
-
+import time
 
 class City: # Init the class to store all the operations needed for each city
     def __init__(self,cid,cname,cstate,pop,cities): # init all the data given
@@ -15,35 +15,35 @@ class City: # Init the class to store all the operations needed for each city
 
 #######################################################################################################################
 class TreeNode:
-    class TreeNode:
-        def __init__(self, key, val, left=None, right=None, parent=None):
-            self.key = key
-            self.payload = val
-            self.leftChild = left
-            self.rightChild = right
-            self.parent = parent
-            self.balanceFactor = 0
 
-        def hasLeftChild(self):
-            return self.leftChild
+    def __init__(self, key, val, left=None, right=None, parent=None):
+        self.key = key
+        self.payload = val
+        self.leftChild = left
+        self.rightChild = right
+        self.parent = parent
+        self.balanceFactor = 0
 
-        def hasRightChild(self):
-            return self.rightChild
+    def hasLeftChild(self):
+        return self.leftChild
 
-        def isLeftChild(self):
-            return self.parent and self.parent.leftChild == self
+    def hasRightChild(self):
+        return self.rightChild
 
-        def isRightChild(self):
-            return self.parent and self.parent.rightChild == self
+    def isLeftChild(self):
+        return self.parent and self.parent.leftChild == self
 
-        def isRoot(self):
-            return not self.parent
+    def isRightChild(self):
+        return self.parent and self.parent.rightChild == self
 
-        def isLeaf(self):
-            return not (self.rightChild or self.leftChild)
+    def isRoot(self):
+        return not self.parent
 
-        def hasAnyChildren(self):
-            return self.rightChild or self.leftChild
+    def isLeaf(self):
+        return not (self.rightChild or self.leftChild)
+
+    def hasAnyChildren(self):
+        return self.rightChild or self.leftChild
 
         def hasBothChildren(self):
             return self.rightChild and self.leftChild
@@ -56,6 +56,7 @@ class COV19Library: # Init the class that will manage all the city objects
         self.isSorted = False # return if the cityArray si sorted, init as False
         self.size = len(self.cityArray) # init the size variable that will be given as the length of cityArray
         self.root = None
+        self.BSTsize = 0
 
 #----------------------------------------------------------------------------------------------------------------------
     def LoadData(self,filename): # Open any csv file given
@@ -149,12 +150,13 @@ class COV19Library: # Init the class that will manage all the city objects
 
 #-----------------------------------------------------------------------------------------------------------------------
 
+
     def put(self, key, val):
         if self.root:
             self._put(key, val, self.root)
         else:
             self.root = TreeNode(key, val)
-        self.size = self.size + 1
+        self.BSTsize = self.BSTsize + 1
 
     def _put(self, key, val, currentNode):
         if key < currentNode.key:
@@ -168,11 +170,48 @@ class COV19Library: # Init the class that will manage all the city objects
             else:
                 currentNode.rightChild = TreeNode(key, val, parent=currentNode)
 
+    def __setitem__(self, k, v):
+        self.put(k, v)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+    def BuildBST(self):
+        #bst = COV19Library()
+
+        for i in range(len(self.cityArray)):
+            self.put(self.cityArray[i].cid, self.cityArray[i].cname)
+            #bst[self.cityArray[i].cid] = bst[self.cityArray[i].cname]
+    def get(self, key):
+        if self.root:
+            res = self._get(key, self.root)
+            if res:
+                return res.payload
+            else:
+                return None
+        else:
+            return None
+
+    def _get(self, key, currentNode):
+        if not currentNode:
+            return None
+        elif currentNode.key == key:
+            return currentNode
+        elif key < currentNode.key:
+            return self._get(key, currentNode.leftChild)
+        else:
+            return self._get(key, currentNode.rightChild)
+
+    def __getitem__(self, key):
+        return self.get(key)
+
 
 '''if __name__ == "__main__":
   c = COV19Library()
   c.LoadData('cov19_city.csv')
-  c.quickSort()
-  for i in range(len(c.cityArray)):
-      print(c.cityArray[i].cname)
-#print(c.linearSearch('23700','id'))'''
+  c.BuildBST()'''
+
+  #c.quickSort()
+  #for i in range(len(c.cityArray)):
+  #    print(c.cityArray[i].cname,c.cityArray[i].cid,c.cityArray[i].cstate,c.cityArray[i].cities)
+
+  #print(c.linearSearch(49780,'id'))
