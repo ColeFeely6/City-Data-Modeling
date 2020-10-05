@@ -22,7 +22,7 @@ class TreeNode:
         self.leftChild = left
         self.rightChild = right
         self.parent = parent
-        self.balancefactor = 0
+        self.balanceFactor = 0
 
     def hasLeftChild(self):
         return self.leftChild
@@ -88,7 +88,7 @@ class AVLTree:
             return
         if node.parent != None:
             if node.isLeftChild():
-                node.parent.balancefactor += 1
+                node.parent.balanceFactor += 1
             elif node.isRightChild():
                 node.parent.balanceFactor -= 1
 
