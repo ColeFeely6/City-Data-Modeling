@@ -70,11 +70,14 @@ class COV19Library: # Init the class that will manage all the city objects
                     names = column[1] # third column will have the names of the city and state that we will seperate
                     cities = [] # init the var cities that will record an array of the cases
 
-
-                    temp = names.split() # set a temp var to split by sp the names array as ex: ['Forest','City','AR']
-                    cstate = temp[len(temp) - 1] #That last item will always our state(s)
-                    newnewtemp = temp[0:len(temp) - 1] # Init a new var that is everything not the state
-                    cname = " ".join(newnewtemp) # use the join function but throw a space in between, found using W3S
+                    if names == "Nashville-Davidson--Murfreesboro--Frankl":
+                        cstate = ""
+                        cname = names
+                    else:
+                        temp = names.split() # set a temp var to split by sp the names array as ex: ['Forest','City','AR']
+                        cstate = temp[len(temp) - 1] #That last item will always our state(s)
+                        newnewtemp = temp[0:len(temp) - 1] # Init a new var that is everything not the state
+                        cname = " ".join(newnewtemp) # use the join function but throw a space in between, found using W3S
 
                     for i in range(4,65): # iterate through the cases data, aka 5th column to the max 66th
                         cities.append(int(column[i])) # add that case to the list
@@ -149,46 +152,7 @@ class COV19Library: # Init the class that will manage all the city objects
         return right
 
 #-----------------------------------------------------------------------------------------------------------------------
-    def idquickSort(self):
-        self.idquicksorthelper(0,self.size-1)
-        self.isSorted = True
 
-
-    def idquicksorthelper(self, first, last):
-        if first < last:
-            splitpoint = self.idpartition(first,last)
-
-            self.idquicksorthelper(first,splitpoint - 1)
-            self.idquicksorthelper(splitpoint + 1,last)
-
-    def idpartition(self,first,last):
-        pivot= self.cityArray[first].cid
-
-        left = first + 1
-        right = last
-
-        done = False
-        while not done:
-            while left <= right and self.cityArray[left].cid <= pivot:
-                left = left + 1
-            while self.cityArray[right].cid >= pivot and right >= left:
-                right = right - 1
-            if right < left:
-                done = True
-            else:
-                temp = self.cityArray[left]
-                self.cityArray[left] = self.cityArray[right]
-                self.cityArray[right] = temp
-                #swap
-
-        temp = self.cityArray[first]
-        self.cityArray[first] = self.cityArray[right]
-        self.cityArray[right] = temp
-        #swap
-
-        return right
-
-#-----------------------------------------------------------------------------------------------------------------------
 
     def put(self, key, val):
         if self.root:
@@ -244,13 +208,13 @@ class COV19Library: # Init the class that will manage all the city objects
         return self.get(key)
 
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
   c = COV19Library()
   c.LoadData('cov19_city.csv')
-  c.BuildBST()'''
+  #c.buildBST()
 
-  #c.quickSort()
-  #for i in range(len(c.cityArray)):
-  #    print(c.cityArray[i].cname,c.cityArray[i].cid,c.cityArray[i].cstate,c.cityArray[i].cities)
+  c.quickSort()
+  for i in range(len(c.cityArray)):
+      print(c.cityArray[i].cname,c.cityArray[i].cid,c.cityArray[i].cstate,c.cityArray[i].cities)
 
   #print(c.linearSearch(49780,'id'))
