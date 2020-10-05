@@ -113,8 +113,9 @@ class AVLTree:
         rotRoot.balanceFactor = rotRoot.balanceFactor + 1 - min(newRoot.balanceFactor, 0)
         newRoot.balanceFactor = newRoot.balanceFactor + 1 + max(rotRoot.balanceFactor, 0)
 
-    def rotateRight(self,rotRoot):
+    def rotateRight(self, rotRoot):
         newRoot = rotRoot.leftChild
+
         rotRoot.leftChild = newRoot.rightChild
         if newRoot.rightChild != None:
             newRoot.rightChild.parent = rotRoot
@@ -124,10 +125,12 @@ class AVLTree:
         else:
             if rotRoot.isRightChild():
                 rotRoot.parent.rightChild = newRoot
+            else:
+                rotRoot.parent.leftChild = newRoot
         newRoot.rightChild = rotRoot
         rotRoot.parent = newRoot
-        rotRoot.balanceFactor = rotRoot.balanceFactor + 1 - min(newRoot.balanceFactor, 0)
-        newRoot.balanceFactor = newRoot.balanceFactor + 1 + max(rotRoot.balanceFactor, 0)
+        rotRoot.balanceFactor = rotRoot.balanceFactor - 1 - max(newRoot.balanceFactor, 0)
+        newRoot.balanceFactor = newRoot.balanceFactor - 1 + min(rotRoot.balanceFactor, 0)
 
     def rebalance(self,node):
         if node.balanceFactor < 0:
@@ -286,6 +289,7 @@ class COV19Library: # Init the class that will manage all the city objects
 if __name__ == "__main__":
   c = COV19Library()
   c.LoadData('cov19_city.csv')
-  #c.buildBST()
+  c.buildBST()
+  c.se
 
   #print(c.linearSearch(49780,'id'))
