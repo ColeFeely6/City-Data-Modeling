@@ -277,15 +277,15 @@ class COV19Library: # Init the class that will manage all the city objects
 
     def buildBST(self):
         #bst = COV19Library()
-        temp = AVLTree()
+        self.temp = AVLTree()
         for i in range(len(self.cityArray)):
-            temp.put(self.cityArray[i].cid, self.cityArray[i])
-        self.root = temp.root
+            self.temp.put(self.cityArray[i].cid, self.cityArray[i])
+        self.root = self.temp.root
             #bst[self.cityArray[i].cid] = bst[self.cityArray[i].cname]
 
     def searchBST(self,key):
         self.buildBST()
-        return self.get(key)
+        return self.temp.get(key)
 
 if __name__ == "__main__":
   c = COV19Library()
