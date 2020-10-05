@@ -112,7 +112,7 @@ class COV19Library: # Init the class that will manage all the city objects
         # make sure to change self.isSorted
         self.quicksorthelper(0,self.size-1)
         self.isSorted = True
-        return self.cityArray
+        
 
     def quicksorthelper(self, first, last):
         if first < last:
