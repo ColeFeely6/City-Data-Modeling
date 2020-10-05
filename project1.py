@@ -149,14 +149,53 @@ class COV19Library: # Init the class that will manage all the city objects
         return right
 
 #-----------------------------------------------------------------------------------------------------------------------
+    def idquickSort(self):
+        self.idquicksorthelper(0,self.size-1)
+        self.isSorted = True
 
+
+    def idquicksorthelper(self, first, last):
+        if first < last:
+            splitpoint = self.idpartition(first,last)
+
+            self.idquicksorthelper(first,splitpoint - 1)
+            self.idquicksorthelper(splitpoint + 1,last)
+
+    def idpartition(self,first,last):
+        pivot= self.cityArray[first].cid
+
+        left = first + 1
+        right = last
+
+        done = False
+        while not done:
+            while left <= right and self.cityArray[left].cid <= pivot:
+                left = left + 1
+            while self.cityArray[right].cid >= pivot and right >= left:
+                right = right - 1
+            if right < left:
+                done = True
+            else:
+                temp = self.cityArray[left]
+                self.cityArray[left] = self.cityArray[right]
+                self.cityArray[right] = temp
+                #swap
+
+        temp = self.cityArray[first]
+        self.cityArray[first] = self.cityArray[right]
+        self.cityArray[right] = temp
+        #swap
+
+        return right
+
+#-----------------------------------------------------------------------------------------------------------------------
 
     def put(self, key, val):
         if self.root:
             self._put(key, val, self.root)
         else:
             self.root = TreeNode(key, val)
-        self.BSTsize = self.BSTsize + 1
+        self.size = self.size + 1
 
     def _put(self, key, val, currentNode):
         if key < currentNode.key:
@@ -174,9 +213,9 @@ class COV19Library: # Init the class that will manage all the city objects
         self.put(k, v)
 
 #-----------------------------------------------------------------------------------------------------------------------
-
     def buildBST(self):
-        self.quickSort()
+
+    def buildBSThelper(self):
         #bst = COV19Library()
 
         for i in range(len(self.cityArray)):
