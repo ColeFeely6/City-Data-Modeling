@@ -176,6 +176,7 @@ class COV19Library: # Init the class that will manage all the city objects
 #-----------------------------------------------------------------------------------------------------------------------
 
     def buildBST(self):
+        self.quickSort()
         #bst = COV19Library()
 
         for i in range(len(self.cityArray)):
