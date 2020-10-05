@@ -224,7 +224,7 @@ class COV19Library: # Init the class that will manage all the city objects
         if self.root:
             res = self._get(key, self.root)
             if res:
-                return res.payload
+                return self.root
             else:
                 return None
         else:
