@@ -195,7 +195,7 @@ class COV19Library: # Init the class that will manage all the city objects
             self._put(key, val, self.root)
         else:
             self.root = TreeNode(key, val)
-        self.size = self.size + 1
+        self.BSTsize = self.BSTsize + 1
 
     def _put(self, key, val, currentNode):
         if key < currentNode.key:
