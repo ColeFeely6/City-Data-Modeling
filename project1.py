@@ -109,17 +109,16 @@ class COV19Library: # Init the class that will manage all the city objects
     ## TODO check and see if proper swapping
 
     def quickSort(self):
-        # make sure to change self.isSorted
         self.quicksorthelper(0,self.size-1)
         self.isSorted = True
-        
+
 
     def quicksorthelper(self, first, last):
         if first < last:
             splitpoint = self.partition(first,last)
 
-            self.quicksorthelper(first,splitpoint-1)
-            self.quicksorthelper(splitpoint+1,last)
+            self.quicksorthelper(first,splitpoint - 1)
+            self.quicksorthelper(splitpoint + 1,last)
 
     def partition(self,first,last):
         pivot= self.cityArray[first].cname
@@ -130,20 +129,20 @@ class COV19Library: # Init the class that will manage all the city objects
         done = False
         while not done:
             while left <= right and self.cityArray[left].cname <= pivot:
-                left += 1
+                left = left + 1
             while self.cityArray[right].cname >= pivot and right >= left:
-                right -= 1
+                right = right - 1
             if right < left:
                 done = True
             else:
-                temp = self.cityArray[left].cname
-                self.cityArray[left].cname = self.cityArray[right].cname
-                self.cityArray[right].cname = temp
+                temp = self.cityArray[left]
+                self.cityArray[left] = self.cityArray[right]
+                self.cityArray[right] = temp
                 #swap
 
-        temp = self.cityArray[first].cname
-        self.cityArray[first].cname = self.cityArray[right].cname
-        self.cityArray[right].cname = temp
+        temp = self.cityArray[first]
+        self.cityArray[first] = self.cityArray[right]
+        self.cityArray[right] = temp
         #swap
 
         return right
@@ -170,7 +169,8 @@ class COV19Library: # Init the class that will manage all the city objects
                 currentNode.rightChild = TreeNode(key, val, parent=currentNode)
 
 
-#c = COV19Library()
-#c.quickSort()
+c = COV19Library()
+c.quickSort()
+for i in
 
 #print(c.linearSearch('23700','id'))
