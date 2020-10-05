@@ -280,6 +280,7 @@ class COV19Library: # Init the class that will manage all the city objects
         temp = AVLTree()
         for i in range(len(self.cityArray)):
             temp.put(self.cityArray[i].cid, self.cityArray[i])
+        self.root = temp.root
             #bst[self.cityArray[i].cid] = bst[self.cityArray[i].cname]
 
     def searchBST(self,key):
