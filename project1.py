@@ -213,9 +213,9 @@ class COV19Library: # Init the class that will manage all the city objects
         self.put(k, v)
 
 #-----------------------------------------------------------------------------------------------------------------------
-    def buildBST(self):
 
-    def buildBSThelper(self):
+
+    def buildBST(self):
         #bst = COV19Library()
 
         for i in range(len(self.cityArray)):
