@@ -22,7 +22,7 @@ class TreeNode:
         self.leftChild = left
         self.rightChild = right
         self.parent = parent
-        self.balanceFactor = 0
+        self.balancefactor = 0
 
     def hasLeftChild(self):
         return self.leftChild
