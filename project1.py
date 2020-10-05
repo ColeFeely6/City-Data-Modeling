@@ -11,7 +11,7 @@ class City: # Init the class to store all the operations needed for each city
         self.cities = cities
     def __str__(self): # Print out the necessary information from LoadData
         return ("cid: "+ str(self.cid) + "; cname: " + str(self.cname) + "; cstate: " \
-                + str(self.cstate) +"; cases:" + str(self.cities[len(self.cities)-1]) )
+                + str(self.cstate) +"; cases:" + str(self.cities) )
 
 #######################################################################################################################
 class TreeNode:
@@ -79,7 +79,7 @@ class COV19Library: # Init the class that will manage all the city objects
                         cities.append(int(column[i])) # add that case to the list
                     # Now for all the data collected for this iteration add it to an instance of city
                     # Add that City Object to the list of all the city objects
-                    data = City(cid,cname,cstate,pop,cities)
+                    data = City(cid,cname,cstate,pop,cities[[len(self.cities)-1]])
                     self.cityArray += [data]
                 # increment count so we can avoid the first row of labels
                 count += 1
