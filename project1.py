@@ -218,7 +218,10 @@ class COV19Library: # Init the class that will manage all the city objects
     def buildBST(self):
         #bst = COV19Library()
         self.idquickSort()
-        for i in range(len(self.cityArray)):
+        mid = self.size // 2
+        for i in range(0,self.cityArray[mid]):
+            self.put(self.cityArray[i].cid, self.cityArray[i].cname)
+        for i in range(self.cityArray[mid],len(self.cityArray)):
             self.put(self.cityArray[i].cid, self.cityArray[i].cname)
             #bst[self.cityArray[i].cid] = bst[self.cityArray[i].cname]
     def get(self, key):
