@@ -5,10 +5,10 @@
 
 
 import csv # For Task 2
-import time # for Task 7,8 and 9
-import random # for Task 7,8 and 9
-import matplotlib.pyplot as plt #for plotting in task 10
-import numpy as np # for plotting for task 10
+#import time # for Task 7,8 and 9
+#import random # for Task 7,8 and 9
+#import matplotlib.pyplot as plt #for plotting in task 10
+#import numpy as np # for plotting for task 10
 
 #######################################################################################################################
 class City: # Init the class to store all the operations needed for each city
