@@ -224,8 +224,7 @@ class COV19Library: # Init the class that will manage all the city objects
                     self.cityArray += [data]
                 # increment count so we can avoid the first row of labels
                 count += 1
-                # Update the size of the Library
-                self.size = len(self.cityArray)
+                
 #----------------------------------------------------------------------------------------------------------------------
 
     def linearSearch(self,city,attribute):
